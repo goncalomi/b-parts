@@ -1,0 +1,9 @@
+ {% extends 'index.html' %}
+ {% block content %}
+    <h1>Links</h1>
+    <ul>
+        <li><a href="{% url 'add_plate' %}">Add License Plate</a></li>
+        <li><a href="{% url 'list_plates' %}">List License Plates</a></li>
+    </ul>
+{% endblock %}
+

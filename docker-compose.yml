@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  web:
+    build: 
+      context: . 
+      dockerfile: Dockerfile 
+    container_name: b-parts
+    volumes:
+      - .:/code
+    ports:
+      - "80:80"

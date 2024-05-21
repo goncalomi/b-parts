@@ -1,0 +1,7 @@
+{% extends 'index.html' %}
+{% block content %}
+    <a href="{% url 'list_plates' %}">Back</a>
+
+    <h1>Edit {{ customer.email }} license plates</h1>
+    {% include 'form_template.html' %}
+{% endblock %}

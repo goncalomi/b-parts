@@ -1,0 +1,50 @@
+<form method="post" id="add-customer-form">
+    {% csrf_token %}
+    {% if customer_form %}
+        <div id="email-input">
+            {{ customer_form.email.label }}
+            {{ customer_form.email }}
+            {{ customer_form.format }}
+            <p id="email-error" class="error-message">Please enter a valid email address.</p>
+        </div>
+    {% endif %}
+    <h2>License Plates</h2>
+    <div id="license-plates">
+        {{ license_plate_formset.management_form }}
+        {% for form in license_plate_formset %}
+            <div class="plate-form">
+                {{ form.id }}
+                {{ form.plate_number.label }}
+                {{ form.plate_number }}
+                {{ form.format }}
+                {%if form.plate_number.value and license_plate_formset.can_delete and form.id.value %}
+                    {{ form.DELETE.label }}
+                    {{ form.DELETE }}
+                {% endif %}
+                {%if form.plate_number.value and not form.id.value %}
+                    <button type="button" class="remove-license-plate" onclick="removePlate(event)">Remove</button>
+                {% endif %}
+                {% for error in form.plate_number.errors %}
+                    <p style="color: red;" >{{error}}</p>
+                {% endfor %}
+                <p class="plate-error error-message">Please enter a valid license plate in the format 00AA00 or 00-00-AA.</p>
+            </div>
+        {% endfor %}
+        
+    </div>
+    <div>
+        <button type="button" id="add-license-plate" onclick="addPlates()">+ License Plate</button>
+    </div>
+    <button type="submit">Submit</button>
+</form>
+
+<div id="empty-form" style="display: none;">
+    <div class="plate-form">
+        {{ license_plate_formset.empty_form.plate_number.label }} 
+        {{ license_plate_formset.empty_form.plate_number }} 
+        {{ license_plate_formset.empty_form.format }}
+        <button type="button" class="remove-license-plate" onclick="removePlate(event)">Remove</button>
+        <p class="plate-error error-message">Please enter a valid license plate in the format 00AA00 or 00-00-AA.</p>
+    </div>
+</div>
+
