@@ -14,47 +14,39 @@ This project is designed to manage customers and their respective license plates
 - Docker
 
 ## Setup Instructions
-### Installation
+### Pull repo
 1. Clone the repository:
-   ```
-   git clone https://github.com/goncalomi/b-parts.git
-   cd b-parts
-   ```
+```sh
+git clone https://github.com/goncalomi/b-parts.git
+cd b-parts
+```
 ### Using Docker (Recommended)
-#### Prerequisites
+### Prerequisites
 - Docker
 - Docker Compose
 
-#### Steps
+### Steps
 1. Build and run the Docker containers:
-    ```
-    docker-compose up --build
-    ```
+`docker-compose up --build`
 ### Without Docker
-#### Prerequisites
+### Prerequisites
 - Python 3.12+
 - pip
 
 2. Create and activate a virtual environment:
-    ```
-    python -m venv venv
-    source venv/bin/activate   # On Windows use `venv\Scripts\activate`
-    ```
+```sh
+python -m venv venv
+source venv/bin/activate   # On Windows use venv\Scripts\activate
+```
 
 3. Install dependencies
-    ```
-    pip install -r requirements.txt
-    ```
+`pip install -r requirements.txt`
 
 4. Run database migrations:
-    ```
-    python manage.py migrate
-    ```
+`python manage.py migrate`
 
 5. Start the development server:
-    ```
-    sudo python manage.py runserver 80
-    ```
+`sudo python manage.py runserver 80`
 
 ## Usage Instructions
 
@@ -76,43 +68,47 @@ This project is designed to manage customers and their respective license plates
 2. Add or remove license plates as needed.
 4. Click "Save".
 
+### Checking data in Django Admin
+1. Navigate to the admin at http://localhost/admin
+2. Login with the credentials:
+    username: admin
+    password: admin
+
 ## Testing
 
 To run the tests with:
-    ```
-    python manage.py test cars/tests
-    ```
+`python manage.py test cars/tests`
     
 ### Forms Tests
-#### CustomerFormTest
+### CustomerFormTest
 - Test with a valid customer email format.
 - Test with an invalid customer email format.
 
-#### LicensePlateFormSetTest
+### LicensePlateFormSetTest
 - Test with a valid license plate inline formset.
 - Test with an invalid license plate inline formset.
 - Test creating a valid license plate.
 - Test creating an invalid license plate.
 
 ### Models Tests
-#### CustomerModelTest
+### CustomerModelTest
 - Test creating a customer with a correct email format.
 - Test creating a customer with a bad email format.
 
-#### LicensePlateModelTest
+### LicensePlateModelTest
 - Test creating a valid license plate with a user.
 - Test creating a valid license plate without a user.
 - Test creating a bad license plate with a user.
 - Test creating an existing license plate with a user.
 
 ### Views Tests
-#### CustomerUpdateViewTest
+### CustomerUpdateViewTest
 - Test with a new customer and new license plate.
 - Test with an invalid license plate.
 - Test with an existing license plate.
 - Test deleting a license plate.
 
-#### CustomerListViewTest
+### CustomerListViewTest
 - Test listing customers and their license plates.
 
 
